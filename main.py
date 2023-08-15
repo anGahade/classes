@@ -1,30 +1,35 @@
-"""
-Створіть клас Student для представлення студента.
-Додайте атрибути, такі як ім'я, прізвище і список оцінок.
-Реалізуйте метод __len__, який повертає кількість оцінок студента.
-Створіть список студентів і відсортуйте його за кількістю оцінок.
-"""
-
-
-class Student:
-    def __init__(self, name, surname, marks):
+class Book:
+    def __init__(self, name, author, year):
         self.name = name
-        self.surname = surname
-        self.marks = list(marks)
+        self.author = author
+        self.year = year
 
-    def __len__(self):
-        return len(self.marks)
-
-    def __lt__(self, other):
-        return len(self) < len(other)
+    def __str__(self):
+        return f"'{self.name}' by {self.author}, Year: {self.year}"
 
 
-student_1 = Student("Alex", "Jackson", [1, 5, 23, 16])
-student_2 = Student("Sonia", "Hellman", [23, 76, 16])
-student_3 = Student("Cristin", "Rubinstein", [1, 5, 23, 76, 16])
+class Library:
+    def __init__(self):
+        self.books = []
 
-stud_list = [student_1, student_2, student_3]
-stud_marks_sort = sorted(stud_list)
+    def add_book(self, book):
+        self.books.append(book)
 
-for student in stud_marks_sort:
-    print(f"Student: {student.name} {student.surname}, Number of Marks: {len(student)}")
+    def __str__(self):
+        return "\n".join(str(book) for book in self.books)
+
+
+book1 = Book("Harry Potter", "J.K. Rowling", 1997)
+book2 = Book("The Hobbit", "J.R.R. Tolkien", 1937)
+book3 = Book("Pride and Prejudice", "Jane Austen", 1813)
+
+
+library = Library()
+
+
+library.add_book(book1)
+library.add_book(book2)
+library.add_book(book3)
+
+
+print(library)
