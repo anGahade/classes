@@ -1,16 +1,28 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+"""
+Розробіть клас Vehicle для представлення транспортного засобу.
+Додайте атрибути, такі як назва, швидкість і вартість.
+Реалізуйте метод __gt__, який порівнює два транспортних засоби за швидкістю.
+Створіть список транспортних засобів і відсортуйте його за швидкістю
+"""
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Vehicle:
+    def __init__(self, name, speed, cost):
+        self.name = name
+        self.speed = speed
+        self.cost = cost
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def __gt__(self, other):
+        return self.speed < other.speed
+
+
+vehicle1 = Vehicle("Car", 150, 30000)
+vehicle2 = Vehicle("Bike", 25, 500)
+vehicle3 = Vehicle("Train", 200, 1000000)
+
+vehicles = [vehicle1, vehicle2, vehicle3]
+
+sorted_vehicles_speed = vehicles.sort(reverse=True)
+
+for vehicle in vehicles:
+    print(f"Vehicle: {vehicle.name}, Speed: {vehicle.speed}, Cost: {vehicle.cost}")
