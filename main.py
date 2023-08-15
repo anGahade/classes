@@ -1,28 +1,30 @@
 """
-Розробіть клас Vehicle для представлення транспортного засобу.
-Додайте атрибути, такі як назва, швидкість і вартість.
-Реалізуйте метод __gt__, який порівнює два транспортних засоби за швидкістю.
-Створіть список транспортних засобів і відсортуйте його за швидкістю
+Створіть клас Student для представлення студента.
+Додайте атрибути, такі як ім'я, прізвище і список оцінок.
+Реалізуйте метод __len__, який повертає кількість оцінок студента.
+Створіть список студентів і відсортуйте його за кількістю оцінок.
 """
 
 
-class Vehicle:
-    def __init__(self, name, speed, cost):
+class Student:
+    def __init__(self, name, surname, marks):
         self.name = name
-        self.speed = speed
-        self.cost = cost
+        self.surname = surname
+        self.marks = list(marks)
 
-    def __gt__(self, other):
-        return self.speed < other.speed
+    def __len__(self):
+        return len(self.marks)
+
+    def __lt__(self, other):
+        return len(self) < len(other)
 
 
-vehicle1 = Vehicle("Car", 150, 30000)
-vehicle2 = Vehicle("Bike", 25, 500)
-vehicle3 = Vehicle("Train", 200, 1000000)
+student_1 = Student("Alex", "Jackson", [1, 5, 23, 16])
+student_2 = Student("Sonia", "Hellman", [23, 76, 16])
+student_3 = Student("Cristin", "Rubinstein", [1, 5, 23, 76, 16])
 
-vehicles = [vehicle1, vehicle2, vehicle3]
+stud_list = [student_1, student_2, student_3]
+stud_marks_sort = sorted(stud_list)
 
-sorted_vehicles_speed = vehicles.sort(reverse=True)
-
-for vehicle in vehicles:
-    print(f"Vehicle: {vehicle.name}, Speed: {vehicle.speed}, Cost: {vehicle.cost}")
+for student in stud_marks_sort:
+    print(f"Student: {student.name} {student.surname}, Number of Marks: {len(student)}")
