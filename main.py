@@ -1,40 +1,24 @@
 """
-Створіть клас Book який має такі атрибути як рік видання, назву, автор та кількість сторінок.
-Створіть статік метод який буде приймати список книжок та рік,
-та повертати кількість книжок з цього списку які були опубліковані у цьому році.
+Створіть клас Rectangle для представлення прямокутника.
+Додайте методи для обчислення площі та периметра прямокутника.
+Створіть об'єкт Rectangle і викличте ці методи.
 """
 
 
-class Book:
-    books = []
+class Rectangle:
 
-    def __init__(self, year, name, author, pages):
-        self.year = year
-        self.name = name
-        self.author = author
-        self.pages = pages
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
 
-    @classmethod
-    def add_book(cls, book):
-        cls.books.append(book)
+    def perimetr(self):
+        return 2 * self.base + 2 * self.height
 
-    @staticmethod
-    def check_books(books, year):
-        count = 0
-        for book in books:
-            if book.year == year:
-                count += 1
-        return count
+    def area(self):
+        return self.base * self.height
 
 
-book1 = Book(1997, "Harry Potter", "J.K. Rowling", 197)
-book2 = Book(1937, "The Hobbit", "J.R.R. Tolkien", 937)
-book3 = Book(1813, "Pride and Prejudice", "Jane Austen", 813)
+rectangle = Rectangle(4, 5)
 
-Book.add_book(book1)
-Book.add_book(book2)
-Book.add_book(book3)
-
-check_year = 1813
-result = Book.check_books(Book.books, check_year)
-print(f"Кількість книжок, опублікованих у {check_year} році: {result}")
+print(f"Площа вашого прямокутника: {Rectangle.area(rectangle)}")
+print(f"Периметр вашого прямокутника: {Rectangle.perimetr(rectangle)}")
