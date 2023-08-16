@@ -1,25 +1,28 @@
 """
-Створіть клас Circle, який представляє коло.
-Реалізуйте методи для обчислення площі та довжини кола.
-Використовуйте аттрибут класу для зберігання значення π (pi).
+Створіть клас Student, який представляє студента.
+Реалізуйте атрибут класу для відстеження кількості студентів.
+Для цього змінюйте значення атрибуту класу у методі __init__ .
+Та створіть клас метод для виведення загальної кількості студентів.
 """
-import math
 
 
-class Circle:
-    pi_number = math.pi
+class Student:
 
-    def __init__(self, radius):
-        self.radius = radius
+    total_students = 0
 
-    def length_of_circle(self):
-        return round(2 * self.pi_number * self.radius, 2)
-    
-    def area_of_circle(self):
-        return round(self.pi_number * self.radius ** 2, 2)
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Student.total_students += 1
+
+    @classmethod
+    def display_students(cls):
+        print(f"Загальна кількість студентів {cls.total_students}")
 
 
-circle = Circle(5)
+student1 = Student("Alice", 20)
+student2 = Student("Jack", 23)
+student3 = Student("Tom", 26)
+student4 = Student("Hellen", 19)
 
-print(f"Area of the circle: {circle.area_of_circle()}")
-print(f"Length of the circle: {circle.length_of_circle()}")
+Student.display_students()
