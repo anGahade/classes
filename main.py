@@ -1,35 +1,25 @@
-class Book:
-    def __init__(self, name, author, year):
-        self.name = name
-        self.author = author
-        self.year = year
-
-    def __str__(self):
-        return f"'{self.name}' by {self.author}, Year: {self.year}"
+"""
+Створіть клас Circle, який представляє коло.
+Реалізуйте методи для обчислення площі та довжини кола.
+Використовуйте аттрибут класу для зберігання значення π (pi).
+"""
+import math
 
 
-class Library:
-    def __init__(self):
-        self.books = []
+class Circle:
+    pi_number = math.pi
 
-    def add_book(self, book):
-        self.books.append(book)
+    def __init__(self, radius):
+        self.radius = radius
 
-    def __str__(self):
-        return "\n".join(str(book) for book in self.books)
-
-
-book1 = Book("Harry Potter", "J.K. Rowling", 1997)
-book2 = Book("The Hobbit", "J.R.R. Tolkien", 1937)
-book3 = Book("Pride and Prejudice", "Jane Austen", 1813)
+    def length_of_circle(self):
+        return round(2 * self.pi_number * self.radius, 2)
+    
+    def area_of_circle(self):
+        return round(self.pi_number * self.radius ** 2, 2)
 
 
-library = Library()
+circle = Circle(5)
 
-
-library.add_book(book1)
-library.add_book(book2)
-library.add_book(book3)
-
-
-print(library)
+print(f"Area of the circle: {circle.area_of_circle()}")
+print(f"Length of the circle: {circle.length_of_circle()}")
