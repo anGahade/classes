@@ -1,24 +1,30 @@
 """
-Створіть клас Rectangle для представлення прямокутника.
-Додайте методи для обчислення площі та периметра прямокутника.
-Створіть об'єкт Rectangle і викличте ці методи.
+Розробіть клас BankAccount для представлення банківського рахунку.
+Додайте методи для зняття та поповнення коштів на рахунку.
+Використовуйте магічний метод __str__ для виведення інформації про рахунок.
 """
 
 
-class Rectangle:
+class BankAccount:
 
-    def __init__(self, base, height):
-        self.base = base
-        self.height = height
+    def __init__(self,account_number, owner_name, balance):
+        self.account_number = account_number
+        self.owner_name = owner_name
+        self.balance = balance
 
-    def perimetr(self):
-        return 2 * self.base + 2 * self.height
+    def add_cash(self, amount):
+        self.balance += int(amount)
 
-    def area(self):
-        return self.base * self.height
+    def withdrawal_cash(self, amount):
+        self.balance -= int(amount)
+
+    def __str__(self):
+        return f"Hello, {self.owner_name}, your account {self.account_number} balance is: {self.balance}$"
 
 
-rectangle = Rectangle(4, 5)
+account1 = BankAccount("123456", "Tom Hanks", 3589)
 
-print(f"Площа вашого прямокутника: {Rectangle.area(rectangle)}")
-print(f"Периметр вашого прямокутника: {Rectangle.perimetr(rectangle)}")
+account1.add_cash(1000)
+account1.withdrawal_cash(3000)
+
+print(account1)
