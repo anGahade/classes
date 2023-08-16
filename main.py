@@ -1,28 +1,40 @@
 """
-Створіть клас Student, який представляє студента.
-Реалізуйте атрибут класу для відстеження кількості студентів.
-Для цього змінюйте значення атрибуту класу у методі __init__ .
-Та створіть клас метод для виведення загальної кількості студентів.
+Створіть клас Book який має такі атрибути як рік видання, назву, автор та кількість сторінок.
+Створіть статік метод який буде приймати список книжок та рік,
+та повертати кількість книжок з цього списку які були опубліковані у цьому році.
 """
 
 
-class Student:
+class Book:
+    books = []
 
-    total_students = 0
-
-    def __init__(self, name, age):
+    def __init__(self, year, name, author, pages):
+        self.year = year
         self.name = name
-        self.age = age
-        Student.total_students += 1
+        self.author = author
+        self.pages = pages
 
     @classmethod
-    def display_students(cls):
-        print(f"Загальна кількість студентів {cls.total_students}")
+    def add_book(cls, book):
+        cls.books.append(book)
+
+    @staticmethod
+    def check_books(books, year):
+        count = 0
+        for book in books:
+            if book.year == year:
+                count += 1
+        return count
 
 
-student1 = Student("Alice", 20)
-student2 = Student("Jack", 23)
-student3 = Student("Tom", 26)
-student4 = Student("Hellen", 19)
+book1 = Book(1997, "Harry Potter", "J.K. Rowling", 197)
+book2 = Book(1937, "The Hobbit", "J.R.R. Tolkien", 937)
+book3 = Book(1813, "Pride and Prejudice", "Jane Austen", 813)
 
-Student.display_students()
+Book.add_book(book1)
+Book.add_book(book2)
+Book.add_book(book3)
+
+check_year = 1813
+result = Book.check_books(Book.books, check_year)
+print(f"Кількість книжок, опублікованих у {check_year} році: {result}")
